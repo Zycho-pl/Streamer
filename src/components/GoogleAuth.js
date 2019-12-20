@@ -9,6 +9,7 @@ class GoogleAuth extends Component {
     window.gapi.load("client:auth2", () => {
       window.gapi.client
         .init({
+          // init zwraca promise - nie trzeba add callback =>
           clientId:
             "17871649436-g5gjl62vdo4vqgtakfh9nbqf9c7qkid7.apps.googleusercontent.com",
           scope: "email"
@@ -34,12 +35,13 @@ class GoogleAuth extends Component {
   onSignInClick = () => {
     this.auth.signIn();
   };
-
+  // można te metody dodać w button
   onSignOutClick = () => {
     this.auth.signOut();
   };
 
   renderAuthButton() {
+    //helper method
     if (this.props.isSignedIn === null) {
       return null;
     } else if (this.props.isSignedIn) {
